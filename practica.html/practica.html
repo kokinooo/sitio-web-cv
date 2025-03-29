@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Películas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .movie {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .movie img {
+            max-width: 100px;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Catálogo de Películas</h1>
+        <input type="text" id="filter" placeholder="Filtrar por género" onkeyup="filterMovies()">
+        <div id="movies">
+            <div class="movie" data-genre="sci-fi">
+                <img src="https://via.placeholder.com/150" alt="Inception">
+                <h2>Inception</h2>
+                <p>Año: 2010</p>
+                <p>Género: Sci-Fi</p>
+            </div>
+            <div class="movie" data-genre="action">
+                <img src="https://via.placeholder.com/150" alt="The Dark Knight">
+                <h2>The Dark Knight</h2>
+                <p>Año: 2008</p>
+                <p>Género: Acción</p>
+            </div>
+            <div class="movie" data-genre="sci-fi">
+                <img src="https://via.placeholder.com/150" alt="Interstellar">
+                <h2>Interstellar</h2>
+                <p>Año: 2014</p>
+                <p>Género: Sci-Fi</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function filterMovies() {
+            let filter = document.getElementById("filter").value.toLowerCase();
+            let movies = document.querySelectorAll(".movie");
+            
+            movies.forEach(movie => {
+                let genre = movie.getAttribute("data-genre").toLowerCase();
+                if (genre.includes(filter)) {
+                    movie.style.display = "block";
+                } else {
+                    movie.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
